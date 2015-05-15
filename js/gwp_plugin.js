@@ -35,18 +35,26 @@ $(document).ready(function(){
             success: function(response) {
                 console.log(response);
 
-                setTimeout(
-                    function()
-                    {
-                        $('.wait-message').fadeOut();
-                        $('.confirm-message').fadeIn();
+                if(response.success == true)
+                {
+                    setTimeout(
+                        function()
+                        {
+                            $('.wait-message').fadeOut();
+                            $('.confirm-message').fadeIn();
 
-                        setTimeout(
-                            function()
-                            {
-                                $('.confirm-message').fadeOut();
-                            }, 2000);
-                    }, 2000);
+                            setTimeout(
+                                function()
+                                {
+                                    $('.confirm-message').fadeOut();
+                                }, 2000);
+                        }, 2000);
+                }
+                else
+                {
+                    alert();
+                }
+
             },
             beforeSend: function(){
                 $('.wait-message').fadeIn();

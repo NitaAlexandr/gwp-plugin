@@ -6,9 +6,29 @@
 
 function gwp_set_site_languages()
 {
-    global $locale,$all_languages;
-//    print_r($_POST['languages']);
-    wp_send_json_success(array($_POST['languages'],$all_languages));
+    if(isset($_POST['languages']) || !empty($_POST['languages']))
+    {
+        global $locale,$all_languages;
+//        print_r($_POST['languages']);
+//        print_r($all_languages);
+
+
+        $new_langs = array();
+        foreach($_POST['languages'] as $post_lang)
+        {
+            if(array_key_exists($post_lang['value'],$all_languages))
+                $new_langs[$post_lang['value']] = $all_languages[$post_lang['value']];
+        }
+
+//        print_r($new_langs);
+
+        wp_send_json_success(array($_POST['languages'],$all_languages,$new_langs));
+    }
+    else
+    {
+        wp_send_json_error("No language was set");
+    }
+
     wp_die();
 }
 add_action( 'wp_ajax_gwp_set_site_languages', 'gwp_set_site_languages' );
