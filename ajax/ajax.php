@@ -6,7 +6,9 @@
 
 function gwp_set_site_languages()
 {
-    wp_send_json($_POST);
-//    wp_die();
+    global $locale,$all_languages;
+//    print_r($_POST['languages']);
+    wp_send_json_success(array($_POST['languages'],$all_languages));
+    wp_die();
 }
 add_action( 'wp_ajax_gwp_set_site_languages', 'gwp_set_site_languages' );

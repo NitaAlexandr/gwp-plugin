@@ -1,0 +1,7 @@
+.gwp-form-class .confirm-message,
+.gwp-form-class .wait-message
+{
+    position: absolute;
+    top: 10px;
+    display: none;
+}

@@ -18,23 +18,42 @@ $(document).ready(function(){
         var action = form.attr('action');
 
         //console.log(form.attr('action'));
-        console.log(ajaxurl);
+        //console.log(ajaxurl);
         //console.log(form.serialize());
 
 
         jQuery.ajax({
-            type : "post",
-            //contentType : "application/json",
             url : ajaxurl,
-            data : {action: action, post_id : 50, nonce: form.serialize()},
+            //contentType : "application/json",
+            //dataType: "json",
+            type : "post",
+            data :
+            {
+                action: action,
+                languages: form.serializeArray()
+            },
             success: function(response) {
                 console.log(response);
-                if(response.type == "success") {
-                    alert("Your vote could be added")
-                }
-                else {
-                    alert("Your vote could not be added")
-                }
+
+                setTimeout(
+                    function()
+                    {
+                        $('.wait-message').fadeOut();
+                        $('.confirm-message').fadeIn();
+
+                        setTimeout(
+                            function()
+                            {
+                                $('.confirm-message').fadeOut();
+                            }, 2000);
+                    }, 2000);
+            },
+            beforeSend: function(){
+                $('.wait-message').fadeIn();
+            },
+            complete: function(){
+                //$('.confirm-message').fadeOut();
+                //alert();
             }
         });
 

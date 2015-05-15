@@ -6,11 +6,11 @@
  * Time: 2:31 PM
  */
 
-global $all_languages;
-$locale_language = get_locale();
+global $all_languages, $locale;
+$locale_language = $locale;
 
+gwp_print($locale);
 gwp_print($all_languages);
-gwp_print($locale_language);
 
 ?>
 
@@ -21,7 +21,7 @@ gwp_print($locale_language);
                 <div class="handlediv" title="Click to toggle"><br></div>
                 <h3 class="hndle ui-sortable-handle"><span><?php _e('Set the languages for the site','gwp'); ?></span></h3>
                 <div class="inside">
-                    <form action="gwp_set_site_languages">
+                    <form class="gwp-form-class" action="gwp_set_site_languages">
 
                         <?php
                         $star_point = 0;
@@ -37,8 +37,8 @@ gwp_print($locale_language);
                             $checked = $message = '';
                             if($locale_language == $id)
                             {
-                                $checked = 'checked  disabled';
-                                $message = '<i>('.__('Default WP Language','gwp').')</i>';
+                                $checked = 'checked ';
+                                $message = '<i>('.__('WordPress Language','gwp').')</i>';
                             }
 
 
@@ -48,6 +48,10 @@ gwp_print($locale_language);
                             <?php
                             $star_point++;
                         }
+                        ?>
+                        <p style=" " class="confirm-message"><?php _e("Saved !!!","gwp"); ?></p>
+                        <p style=" " class="wait-message"><?php _e("Wait a moment... Saving...","gwp"); ?></p>
+                        <?php
                         submit_button(__('Set languages','gwp'));
                         ?>
                     </form>

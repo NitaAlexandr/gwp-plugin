@@ -24,6 +24,7 @@ class GWP{
         add_action( 'admin_notices', array($this,'admin_notification') );
         add_action( 'admin_menu', array($this,'__create_admin_pages'));
         add_action( 'admin_enqueue_scripts', array($this,'__include_scripts'));
+        add_action( 'admin_head', array($this,'__include_styles'));
 
     }
 
@@ -87,5 +88,12 @@ class GWP{
     {
         wp_register_script('gwp-plugin-application',GWP_URL.'js/gwp_plugin.js');
         wp_enqueue_script('gwp-plugin-application');
+    }
+
+    function  __include_styles()
+    {
+        wp_register_style('gwp-plugin-css',GWP_URL.'css/plugin.css');
+        wp_enqueue_style('gwp-plugin-css');
+
     }
 }
