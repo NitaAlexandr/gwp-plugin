@@ -59,6 +59,23 @@ gwp_print($all_languages);
             </div>
 
 
+        <?php
+        $hidden_form = 'display: none';
+        if(get_option('gwp-site-language') != false)
+            $hidden_form = 'display: block';
+        ?>
+        <div id="set-default-language" class="postbox " style="<?php echo $hidden_form; ?>">
+            <div class="handlediv" title="Click to toggle"><br></div>
+            <h3 class="hndle ui-sortable-handle"><span><?php _e('Set Default Language','gwp'); ?></span></h3>
+            <div class="inside">
+                <form action="gwp_set_default_site_language">
+
+                    <?php
+                    submit_button(__('Set','gwp'));
+                    ?>
+                </form>
+            </div>
+        </div>
 
         <div id="" class="postbox ">
             <div class="handlediv" title="Click to toggle"><br></div>

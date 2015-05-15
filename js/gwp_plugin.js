@@ -17,15 +17,8 @@ $(document).ready(function(){
         var form = $(this);
         var action = form.attr('action');
 
-        //console.log(form.attr('action'));
-        //console.log(ajaxurl);
-        //console.log(form.serialize());
-
-
         jQuery.ajax({
             url : ajaxurl,
-            //contentType : "application/json",
-            //dataType: "json",
             type : "post",
             data :
             {
@@ -47,6 +40,7 @@ $(document).ready(function(){
                                 function()
                                 {
                                     $('.confirm-message').fadeOut();
+                                    $('#set-default-language').slideDown();
                                 }, 2000);
                         }, 2000);
                 }
@@ -60,12 +54,7 @@ $(document).ready(function(){
                 $('.wait-message').fadeIn();
             },
             complete: function(){
-                //$('.confirm-message').fadeOut();
-                //alert();
             }
         });
-
-
     })
-
  });

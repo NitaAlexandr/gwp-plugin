@@ -9,9 +9,6 @@ function gwp_set_site_languages()
     if(isset($_POST['languages']) || !empty($_POST['languages']))
     {
         global $locale,$all_languages;
-//        print_r($_POST['languages']);
-//        print_r($all_languages);
-
 
         $new_langs = array();
         foreach($_POST['languages'] as $post_lang)
@@ -20,7 +17,7 @@ function gwp_set_site_languages()
                 $new_langs[$post_lang['value']] = $all_languages[$post_lang['value']];
         }
 
-//        print_r($new_langs);
+        update_option("gwp-site-language",$new_langs,false);
 
         wp_send_json_success(array($_POST['languages'],$all_languages,$new_langs));
     }
