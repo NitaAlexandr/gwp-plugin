@@ -65,7 +65,7 @@ class GWP{
         include_once GWP_FILES_PATH.'languages.php';
         include_once GWP_FILES_PATH.'functions.php';
 
-        include_once GWP_PATH.'forms/forms.php';
+        include_once GWP_PATH.'meta_boxes/posts-default.php';
 
     }
 

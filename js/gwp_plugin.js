@@ -15,7 +15,7 @@ $(document).ready(function(){
         console.log(this);
 
         var form = $(this);
-        var action = form.attr('action')
+        var action = form.attr('action');
 
         console.log(form.attr('action'));
         console.log(form.serialize());

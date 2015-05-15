@@ -37,12 +37,23 @@ add_action( 'add_meta_boxes', 'myplugin_add_meta_box' );
 
 
 
-function gwp_post_meta_box_callback($parameters)
+function gwp_post_meta_box_callback($post)
 {
-    if(defined('WPLANG'))
-        gwp_print(WPLANG);
-    else
-                gwp_print('dashboard in english');
 
-    gwp_print($parameters);
+    if(in_array($post->post_status,array('published','draft','private','pending')))
+    {
+        $local_language = get_locale();
+        gwp_print($local_language);
+        gwp_print($post);
+    }
+    else
+    {
+        echo '<p>"'.$post->post_type.'" '; _e('can not be translated','gwp'); echo '</p>';
+        echo '<p> '.__('Cause: post status - ','gwp').$post->post_status. '</p>';
+
+    }
+
+
+
+
 }

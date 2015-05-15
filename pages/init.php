@@ -7,7 +7,10 @@
  */
 
 global $all_languages;
-//gwp_print($all_languages);
+$locale_language = get_locale();
+
+gwp_print($all_languages);
+gwp_print($locale_language);
 
 ?>
 
@@ -30,9 +33,18 @@ global $all_languages;
                             {
                                 $style = 'font-weight: bold';
                             }
+
+                            $checked = $message = '';
+                            if($locale_language == $id)
+                            {
+                                $checked = 'checked  disabled';
+                                $message = '<i>('.__('Default WP Language','gwp').')</i>';
+                            }
+
+
                             ?>
-                            <input type="checkbox" name="site-languages" id="<?php echo $id; ?>" value="<?php echo $id; ?>"/>
-                            <label style="<?php echo $style; ?>" for="<?php echo $id; ?>"><?php echo $data['name']; ?></label>&nbsp;|
+                            <input <?php echo $checked; ?> type="checkbox" name="site-languages" id="<?php echo $id; ?>" value="<?php echo $id; ?>"/>
+                            <label style="<?php echo $style; ?>" for="<?php echo $id; ?>"><?php echo $data['name'].' '.$message; ?></label>&nbsp;|
                             <?php
                             $star_point++;
                         }
@@ -100,3 +112,5 @@ global $all_languages;
     </div>
 </div>
 
+<?php
+unset($locale_language);
