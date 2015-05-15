@@ -9,7 +9,7 @@ $(document).ready(function(){
     * saving anything with a form
     * */
 
-    $("form").on('submit',function(event){
+    $(".gwp-page-area form").on('submit',function(event){
 
         event.preventDefault();
         console.log(this);

@@ -12,7 +12,7 @@ global $all_languages;
 ?>
 
 
-<div class="wrap">
+<div class="wrap gwp-page-area">
     <div id="poststuff">
             <div id="" class="postbox ">
                 <div class="handlediv" title="Click to toggle"><br></div>
