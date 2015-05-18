@@ -19,6 +19,7 @@ class GWP{
         include_once GWP_PATH.'files/definitions.php';
         load_plugin_textdomain( 'gwp', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
+        $this->include_classes();
         $this->include_files();
 
         add_action( 'admin_notices', array($this,'admin_notification') );
@@ -68,6 +69,14 @@ class GWP{
 
         include_once GWP_PATH.'meta_boxes/posts-default.php';
 
+    }
+
+    /*
+     * this function is including some classes
+     */
+
+    private function include_classes()
+    {
     }
 
     function admin_notification(){

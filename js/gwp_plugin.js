@@ -33,14 +33,14 @@ $(document).ready(function(){
                     setTimeout(
                         function()
                         {
-                            $('.wait-message').fadeOut();
-                            $('.confirm-message').fadeIn();
+                            form.find('.wait-message').fadeOut();
+                            form.find('.confirm-message').fadeIn();
 
                             setTimeout(
                                 function()
                                 {
-                                    $('.confirm-message').fadeOut();
-                                    $('#set-default-language').slideDown();
+                                    form.find('.confirm-message').fadeOut().find('#set-default-language').slideDown();
+                                    //form.find('#set-default-language').slideDown();
                                 }, 2000);
                         }, 2000);
                 }
@@ -51,7 +51,7 @@ $(document).ready(function(){
 
             },
             beforeSend: function(){
-                $('.wait-message').fadeIn();
+                form.find('.wait-message').fadeIn();
             },
             complete: function(){
             }

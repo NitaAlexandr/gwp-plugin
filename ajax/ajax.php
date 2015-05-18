@@ -17,9 +17,12 @@ function gwp_set_site_languages()
                 $new_langs[$post_lang['value']] = $all_languages[$post_lang['value']];
         }
 
-        update_option("gwp-site-language",$new_langs,false);
+        $all_gwp_settings = get_option("gwp-user-settings");
+        $all_gwp_settings['gwp-site-language'] = $new_langs;
 
-        wp_send_json_success(array($_POST['languages'],$all_languages,$new_langs));
+        update_option("gwp-user-settings",$all_gwp_settings,false);
+
+        wp_send_json_success();
     }
     else
     {
